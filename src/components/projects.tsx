@@ -10,14 +10,14 @@ import {
   SiExpress,
   SiMongodb,
   SiGithub,
-  SiCloudinary,
   SiTypescript,
   SiGooglegemini,
   SiPython,
-  SiHuggingface
+  SiHuggingface,
+  SiHtml5
 } from "react-icons/si";
 import { BiCloud, BiLinkExternal } from "react-icons/bi";
-import { HiAcademicCap, HiPencilAlt, HiPlay, HiOutlineSearchCircle } from "react-icons/hi";
+import { HiAcademicCap, HiPencilAlt, HiPlay, HiOutlineSearchCircle, HiTemplate } from "react-icons/hi";
 import Image from "next/image";
 
 const ProjectsSection = () => {
@@ -29,6 +29,45 @@ const ProjectsSection = () => {
 
   const projects = [
     {
+      title: "Mimi",
+      description:
+        "A next-gen meme creation & social platform. Features a powerful browser-based image editor (Canvas API) with layers, text styling, and drawing tools. Includes a Pinterest-style masonry feed, trending algorithms, user profiles, and seamless social interaction.",
+      icon: <HiTemplate className="w-6 h-6" />,
+      imageUrl: "/mimi.png", // Make sure to add a screenshot named mimi-preview.jpg to your public folder
+      demoUrl: "https://mimi-create.vercel.app",
+      githubUrl: "https://github.com/kneerazzz/mimi",
+      technologies: [
+        { name: "Next.js 15", icon: <SiNextdotjs className="w-5 h-5" /> },
+        { name: "Canvas API", icon: <SiHtml5 className="w-5 h-5" /> }, // Representing Canvas with HTML5 icon
+        { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
+        { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
+        { name: "Express", icon: <SiExpress className="w-5 h-5" /> },
+        { name: "MongoDB", icon: <SiMongodb className="w-5 h-5" /> },
+        { name: "TailwindCSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+      ],
+      category: "Full-Stack",
+      featured: true,
+    },
+    {
+      title: "Vindex",
+      description:
+        "AI-powered semantic search for YouTube videos. Enter a URL and query to find exact timestamps where topics are discussed. Uses transcripts (captions/Whisper), local AI embeddings (Python/Transformers), vector search (MongoDB Atlas), Node.js backend, and Next.js frontend.",
+      icon: <HiOutlineSearchCircle className="w-6 h-6" />, 
+      imageUrl: "/vindex.jpg", 
+      demoUrl: "https://vindex0.vercel.app", 
+      githubUrl: "https://github.com/kneerazzz/vindex", 
+      technologies: [
+        { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
+        { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+        { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
+        { name: "MongoDB Atlas", icon: <SiMongodb className="w-5 h-5" /> },
+        { name: "Python", icon: <SiPython className="w-5 h-5" /> },
+        { name: "Transformers", icon: <SiHuggingface className="w-5 h-5" /> },
+      ],
+      category: "Full Stack AI", 
+      featured: true, 
+    },
+    {
       title: "SkillSprint",
       description:
         "A robust full-stack EdTech platform. It dynamically generates daily learning topics, tracks user progress, and gamifies skill development with interactive challenges and personalized learning paths. Real-time updates and responsive UI ensure a smooth experience across devices.",
@@ -39,32 +78,12 @@ const ProjectsSection = () => {
       technologies: [
         { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
         { name: "TailwindCSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-        { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
         { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
-        { name: "Express", icon: <SiExpress className="w-5 h-5" /> },
         { name: "MongoDB", icon: <SiMongodb className="w-5 h-5" /> },
-        { name: "Cloudinary", icon: <SiCloudinary className="w-5 h-5" /> },
         { name: "Ai", icon: <SiGooglegemini className="w-5 h-5" /> }
       ],
       category: "Full-Stack",
-      featured: true,
-    },
-    {
-      title: "Troy Blog App",
-      description:
-        "A blog app I built for sharing ideas. Clean, responsive, and easy to write/read posts.",
-      icon: <HiPencilAlt className="w-6 h-6" />,
-      imageUrl: "/troyy.jpg",
-      demoUrl: "https://troyy.netlify.app/",
-      githubUrl: "#",
-      technologies: [
-        { name: "React", icon: <SiReact className="w-5 h-5" /> },
-        { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
-        { name: "TailwindCSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-        { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
-      ],
-      category: "Frontend",
-      featured: true,
+      featured: false,
     },
     {
       title: "YouTube Backend Clone",
@@ -84,27 +103,22 @@ const ProjectsSection = () => {
       featured: false,
     },
     {
-      title: "Vindex",
+      title: "Troy Blog App",
       description:
-        "AI-powered semantic search for YouTube videos. Enter a URL and query to find exact timestamps where topics are discussed. Uses transcripts (captions/Whisper), local AI embeddings (Python/Transformers), vector search (MongoDB Atlas), Node.js backend, and Next.js frontend.",
-      icon: <HiOutlineSearchCircle className="w-6 h-6" />, // Using Search icon
-      imageUrl: "/vindex.jpg", // Replace with an actual screenshot/logo path
-      demoUrl: "https://vindex0.vercel.app", // Your Vercel deployment URL
-      githubUrl: "https://github.com/kneerazzz/vindex", // Your GitHub repo URL
+        "A blog app I built for sharing ideas. Clean, responsive, and easy to write/read posts.",
+      icon: <HiPencilAlt className="w-6 h-6" />,
+      imageUrl: "/troyy.jpg",
+      demoUrl: "https://troyy.netlify.app/",
+      githubUrl: "#",
       technologies: [
-        { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+        { name: "React", icon: <SiReact className="w-5 h-5" /> },
+        { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
+        { name: "TailwindCSS", icon: <SiTailwindcss className="w-5 h-5" /> },
         { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
-        { name: "Express", icon: <SiExpress className="w-5 h-5" /> },
-        { name: "MongoDB Atlas", icon: <SiMongodb className="w-5 h-5" /> },
-        { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
-        { name: "Python", icon: <SiPython className="w-5 h-5" /> },
-        { name: "Hugging Face Transformers", icon: <SiHuggingface className="w-5 h-5" /> },
-        // { name: "Docker", icon: <FaDocker className="w-5 h-5" /> }, // Add if you dockerized the AI service
       ],
-      category: "Full Stack AI", // Or "AI/ML", "Full Stack"
-      featured: true, // Mark as featured if desired
-    }
+      category: "Frontend",
+      featured: false,
+    },
   ];
 
   return (
@@ -129,19 +143,19 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`group relative bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 transition-all duration-500 hover:border-gray-600 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 ${
+              className={`group relative flex flex-col bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 transition-all duration-500 hover:border-gray-600 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              } ${project.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
+              }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {project.imageUrl && (
-                <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                <div className="relative w-full h-48 shrink-0 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
                     <Image
                         width={500}
-                        height={700}
+                        height={300}
                         src={project.imageUrl}
                         alt={project.title}
-                        className="w-full h-full object-contain group-hover:scale-110 transition-all duration-700 ease-out"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 ease-out"
                     />
                     {/* Dark overlay to blend with portfolio theme */}
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
@@ -150,7 +164,7 @@ const ProjectsSection = () => {
                 </div>
               )}
 
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
@@ -192,19 +206,19 @@ const ProjectsSection = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300 flex-grow">
                   {project.description}
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-3 mt-auto">
                   <h4 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Technologies
                   </h4>
-                  <div className="flex flex-wrap gap-y-2 gap-x-1.5">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
                       <div
                         key={techIndex}
-                        className="flex items-center space-x-1.5 bg-gray-800/80 rounded-lg px-3 py-1.5 border border-gray-700 group-hover:border-gray-600 transition-all duration-250"
+                        className="flex items-center space-x-1.5 bg-gray-800/80 rounded-lg px-2.5 py-1.5 border border-gray-700 group-hover:border-gray-600 transition-all duration-250"
                       >
                         <div className="text-white">{tech.icon}</div>
                         <span className="text-xs font-medium text-white">{tech.name}</span>
@@ -215,8 +229,8 @@ const ProjectsSection = () => {
               </div>
 
               {project.featured && (
-                <div className="absolute top-4 right-4">
-                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full shadow-lg">
+                <div className="absolute top-4 right-4 z-20">
+                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg tracking-wide uppercase">
                     Featured
                   </div>
                 </div>

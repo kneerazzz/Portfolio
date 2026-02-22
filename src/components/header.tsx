@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Home, User, Github, Linkedin, X } from "lucide-react";
 import { IconPuzzle, IconRocket, IconArticle } from "@tabler/icons-react";
 
 export default function Header() {
   const pathname = usePathname();
+  const [activeHash, setActiveHash] = useState<string>("");
 
   const navLinks = [
     { href: "/", icon: <Home size={18} />, label: "Home" },
@@ -17,10 +19,38 @@ export default function Header() {
 
   const socialLinks = [
     { href: "https://github.com/kneerazzz", icon: <Github size={18} />, label: "GitHub" },
-    { href: "https://x.com/xllyod", icon: <X size={18} />, label: "Twitter" },
+    { href: "https://x.com/kneerazzz", icon: <X size={18} />, label: "Twitter" },
     { href: "https://linkedin.com/in/kneerazzz", icon: <Linkedin size={18} />, label: "LinkedIn" },
     { href: "/", icon: <IconArticle size={18} />, label: "Blogs" },
   ];
+
+  // 🔥 Track active section using IntersectionObserver
+  useEffect(() => {
+    const sections = ["skills", "projects"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHash(`#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const isActive = (href: string) => {
+    if (href.startsWith("#")) return activeHash === href;
+    return pathname === href && !activeHash;
+  };
 
   return (
     <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
@@ -31,7 +61,7 @@ export default function Header() {
             <Link key={link.href} href={link.href}>
               <div
                 className={`relative group px-1 rounded-full transition-all duration-300 hover:px-3 hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
-                  pathname === link.href
+                  isActive(link.href)
                     ? "text-yellow-500"
                     : "text-black dark:text-white"
                 }`}
@@ -44,10 +74,10 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* Divider (hidden on small screens) */}
+          {/* Divider */}
           <span className="hidden sm:block w-[2px] h-6 bg-gray-400 mx-2"></span>
 
-          {/* Social links (hidden on small screens) */}
+          {/* Social links */}
           <div className="hidden sm:flex items-center gap-4">
             {socialLinks.map((social) => (
               <a

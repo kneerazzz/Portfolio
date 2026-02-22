@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { HiDownload } from "react-icons/hi"; // Import the download icon
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +31,6 @@ export default function HeroSection() {
           className="object-cover"
           priority
         />
-        <div className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-white to-gray-500 rounded-full"></div>
       </div>
 
       {/* Name */}
@@ -39,19 +39,34 @@ export default function HeroSection() {
       </h1>
 
       {/* Description */}
-      <div className="text-center">
-        <p className="mt-1 text-lg font-medium text-gray-600 max-w-2xl mx-auto">
+      <div className={`text-center transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <p className="mt-1 text-lg font-medium text-gray-400 max-w-2xl mx-auto leading-relaxed">
             I&apos;m a full-stack developer who enjoys building clean, scalable apps.  
-            Right now, I&apos;m shifting my focus to AI 
-            because I want to dive into creating and experimenting with AI models —  
-            not just apps that use them.
+            Right now, I&apos;m shifting my focus to <span className="text-gray-200">AI agents & Automation </span> 
+             because I want to dive into creating workflows that work for me.
         </p>
-        <a 
+
+        {/* Buttons Container */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+          
+          {/* Resume Button */}
+          <a 
+            href="/resume.pdf" 
+            download="Neeraj_Resume.pdf"
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-zinc-100 text-gray-900 rounded-full font-semibold transition-all duration-300 hover:scale-100"
+          >
+            <HiDownload className="w-5 h-5 group-hover:animate-bounce" />
+            <span>Download Resume</span>
+          </a>
+
+          {/* Read More Link */}
+          <a 
             href="/about" 
-            className="inline-block mt-6 text-gray-500 hover:underline"
-        >
-            Read more →
-        </a>
+            className="text-gray-500 hover:text-white transition-colors duration-300 border-b border-transparent hover:border-gray-500 pb-0.5"
+          >
+            Read more about me →
+          </a>
+        </div>
       </div>
 
       <style jsx>{`

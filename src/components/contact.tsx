@@ -54,7 +54,7 @@ export default function Contact() {
     };
 
   return (
-    <section id="contact" className="py-12 px-4 sm:px-6">
+    <section id="contact" className="pt-8 pb-2 px-4 sm:px-6">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-6">
           <div className="flex justify-center mb-2">

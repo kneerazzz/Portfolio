@@ -18,9 +18,12 @@ import {
   SiGithub,
   SiPostman,
   SiLinux,
+  SiN8N,            // Added
+  SiHuggingface,    // Added 
+  SiOpenai,         // Added
 } from "react-icons/si";
-import { BiData, BiCloud } from "react-icons/bi";
-import { VscSymbolKeyword } from "react-icons/vsc";
+import { BiCloud, BiBot, BiNetworkChart } from "react-icons/bi"; // Added Bot and Network icons
+import { VscSymbolKeyword, VscCircuitBoard } from "react-icons/vsc"; // Added CircuitBoard for automation
 
 const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,9 +39,9 @@ const SkillsSection = () => {
         { name: "JavaScript", icon: <SiJavascript className="w-4 h-4" /> },
         { name: "HTML", icon: <SiHtml5 className="w-4 h-4" /> },
         { name: "CSS", icon: <SiCss3 className="w-4 h-4" /> },
-        { name: "C", icon: <SiC className="w-4 h-4" /> },
-        { name: "C++", icon: <SiCplusplus className="w-4 h-4" /> },
         { name: "Python", icon: <SiPython className="w-4 h-4" /> },
+        { name: "C++", icon: <SiCplusplus className="w-4 h-4" /> },
+        { name: "C", icon: <SiC className="w-4 h-4" /> },
       ],
     },
     {
@@ -61,18 +64,22 @@ const SkillsSection = () => {
       ],
     },
     {
+      title: "AI, Automation & Agents", // Updated Title
+      skills: [
+        { name: "n8n", icon: <SiN8N className="w-4 h-4" /> }, // Added n8n
+        { name: "AI Agents", icon: <BiBot className="w-4 h-4" /> }, // Added Agents
+        { name: "Automation", icon: <VscCircuitBoard className="w-4 h-4" /> }, // Automation workflows
+        { name: "RAG Pipelines", icon: <BiNetworkChart className="w-4 h-4" /> }, // RAG/Flows
+        { name: "Hugging Face", icon: <SiHuggingface className="w-4 h-4" /> }, // Transformers
+        { name: "OpenAI API", icon: <SiOpenai className="w-4 h-4" /> }, // LLMs
+      ],
+    },
+    {
       title: "Dev Tools",
       skills: [
         { name: "Git/GitHub", icon: <SiGithub className="w-4 h-4" /> },
         { name: "Postman", icon: <SiPostman className="w-4 h-4" /> },
         { name: "Linux", icon: <SiLinux className="w-4 h-4" /> },
-      ],
-    },
-    {
-      title: "AI / ML (Exploring)",
-      skills: [
-        { name: "Python basics", icon: <SiPython className="w-4 h-4" /> },
-        { name: "AI model development", icon: <BiData className="w-4 h-4" /> },
       ],
     },
   ];
