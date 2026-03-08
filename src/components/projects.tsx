@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   SiJavascript,
   SiReact,
@@ -14,10 +15,19 @@ import {
   SiGooglegemini,
   SiPython,
   SiHuggingface,
-  SiHtml5
+  SiHtml5,
+  SiSqlite,
+  SiLinux
 } from "react-icons/si";
 import { BiCloud, BiLinkExternal } from "react-icons/bi";
-import { HiAcademicCap, HiPencilAlt, HiPlay, HiOutlineSearchCircle, HiTemplate } from "react-icons/hi";
+import { 
+  HiAcademicCap, 
+  HiPencilAlt, 
+  HiPlay, 
+  HiOutlineSearchCircle, 
+  HiTemplate,
+  HiOutlineLockClosed 
+} from "react-icons/hi";
 import Image from "next/image";
 
 const ProjectsSection = () => {
@@ -33,12 +43,12 @@ const ProjectsSection = () => {
       description:
         "A next-gen meme creation & social platform. Features a powerful browser-based image editor (Canvas API) with layers, text styling, and drawing tools. Includes a Pinterest-style masonry feed, trending algorithms, user profiles, and seamless social interaction.",
       icon: <HiTemplate className="w-6 h-6" />,
-      imageUrl: "/mimi.png", // Make sure to add a screenshot named mimi-preview.jpg to your public folder
+      imageUrl: "/mimi.png", 
       demoUrl: "https://mimi-create.vercel.app",
       githubUrl: "https://github.com/kneerazzz/mimi",
       technologies: [
         { name: "Next.js 15", icon: <SiNextdotjs className="w-5 h-5" /> },
-        { name: "Canvas API", icon: <SiHtml5 className="w-5 h-5" /> }, // Representing Canvas with HTML5 icon
+        { name: "Canvas API", icon: <SiHtml5 className="w-5 h-5" /> },
         { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
         { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
         { name: "Express", icon: <SiExpress className="w-5 h-5" /> },
@@ -80,7 +90,7 @@ const ProjectsSection = () => {
         { name: "TailwindCSS", icon: <SiTailwindcss className="w-5 h-5" /> },
         { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
         { name: "MongoDB", icon: <SiMongodb className="w-5 h-5" /> },
-        { name: "Ai", icon: <SiGooglegemini className="w-5 h-5" /> }
+        { name: "AI", icon: <SiGooglegemini className="w-5 h-5" /> }
       ],
       category: "Full-Stack",
       featured: false,
@@ -103,20 +113,19 @@ const ProjectsSection = () => {
       featured: false,
     },
     {
-      title: "Troy Blog App",
+      title: "Hypr-Vault",
       description:
-        "A blog app I built for sharing ideas. Clean, responsive, and easy to write/read posts.",
-      icon: <HiPencilAlt className="w-6 h-6" />,
-      imageUrl: "/troyy.jpg",
-      demoUrl: "https://troyy.netlify.app/",
-      githubUrl: "#",
+        "A dark, minimal password manager widget for Linux/Hyprland built with QuickShell and a zero-knowledge Node.js backend. Features AES-256-GCM encryption, scrypt key derivation, portable 'Lifeboat' recovery bundles, and data integrity checks.",
+      icon: <HiOutlineLockClosed className="w-6 h-6" />,
+      imageUrl: "/hypr_vault.png", 
+      demoUrl: null,
+      githubUrl: "https://github.com/kneerazzz/hypr_vault",
       technologies: [
-        { name: "React", icon: <SiReact className="w-5 h-5" /> },
-        { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
-        { name: "TailwindCSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+        { name: "Linux/QML", icon: <SiLinux className="w-5 h-5" /> },
         { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
+        { name: "SQLite", icon: <SiSqlite className="w-5 h-5" /> },
       ],
-      category: "Frontend",
+      category: "Desktop & Security",
       featured: false,
     },
   ];
@@ -129,15 +138,27 @@ const ProjectsSection = () => {
       <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-purple-900/30 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-blob animation-delay-4000"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2
-          className={`text-2xl md:text-3xl font-bold text-start mb-8 transition-all duration-700 ${
+        
+        {/* Header Section with the Title and Link */}
+        <div 
+          className={`flex flex-col sm:flex-row sm:justify-between sm:items-end mb-8 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
-            Projects
-          </span>
-        </h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-start mb-2 sm:mb-0">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-300">
+              Projects
+            </span>
+          </h2>
+          
+          {/* New 'More Projects' link */}
+          <Link 
+            href="/projects" 
+            className="text-blue-400 hover:text-blue-300 font-medium text-sm transition-colors flex items-center gap-1 group"
+          >
+            More projects <BiLinkExternal className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
@@ -149,7 +170,7 @@ const ProjectsSection = () => {
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {project.imageUrl && (
-                <div className="relative w-full h-48 shrink-0 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                <div className="relative w-full h-48 shrink-0 overflow-hidden bg-linear-to-br from-gray-800 to-gray-900">
                     <Image
                         width={500}
                         height={300}
@@ -157,14 +178,12 @@ const ProjectsSection = () => {
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 ease-out"
                     />
-                    {/* Dark overlay to blend with portfolio theme */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
-                    {/* Subtle border at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gray-600 to-transparent"></div>
                 </div>
               )}
 
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col grow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
@@ -206,7 +225,7 @@ const ProjectsSection = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300 flex-grow">
+                <p className="text-gray-300 text-sm mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300 grow">
                   {project.description}
                 </p>
 
@@ -230,7 +249,7 @@ const ProjectsSection = () => {
 
               {project.featured && (
                 <div className="absolute top-4 right-4 z-20">
-                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg tracking-wide uppercase">
+                  <div className="bg-linear-to-r from-blue-500 to-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg tracking-wide uppercase">
                     Featured
                   </div>
                 </div>
@@ -239,6 +258,7 @@ const ProjectsSection = () => {
           ))}
         </div>
 
+        {/* Existing Bottom GitHub Link */}
         <div
           className={`text-center mt-12 transition-all duration-700 delay-500 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -251,7 +271,7 @@ const ProjectsSection = () => {
             className="inline-flex items-center space-x-2 bg-gray-800/80 backdrop-blur-sm text-white px-6 py-3 rounded-lg border border-gray-700 hover:border-gray-600 hover:bg-gray-700/80 transition-all duration-300 group"
           >
             <SiGithub className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-            <span className="font-medium">View More Projects</span>
+            <span className="font-medium">View GitHub Profile</span>
             <BiLinkExternal className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </a>
         </div>
@@ -259,18 +279,10 @@ const ProjectsSection = () => {
 
       <style jsx>{`
         @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
         }
         .animate-blob {
           animation: blob 7s infinite;

@@ -18,9 +18,10 @@ import {
   SiGithub,
   SiPostman,
   SiLinux,
-  SiN8N,            // Added
-  SiHuggingface,    // Added 
-  SiOpenai,         // Added
+  SiN8N,          
+  SiHuggingface,     
+  SiOpenai,         
+  SiDocker,         
 } from "react-icons/si";
 import { BiCloud, BiBot, BiNetworkChart } from "react-icons/bi"; // Added Bot and Network icons
 import { VscSymbolKeyword, VscCircuitBoard } from "react-icons/vsc"; // Added CircuitBoard for automation
@@ -80,6 +81,7 @@ const SkillsSection = () => {
         { name: "Git/GitHub", icon: <SiGithub className="w-4 h-4" /> },
         { name: "Postman", icon: <SiPostman className="w-4 h-4" /> },
         { name: "Linux", icon: <SiLinux className="w-4 h-4" /> },
+        { name: "Docker", icon: <SiDocker className="w-4 h-4" />}
       ],
     },
   ];
@@ -93,13 +95,13 @@ const SkillsSection = () => {
 
       <div className="max-w-3xl mx-auto relative z-10">
         <h2 className={`text-2xl md:text-4xl font-bold text-start mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Skills</span>
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-500">Skills</span>
         </h2>
 
         <div className="space-y-8">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className={`transition-all duration-700 delay-${categoryIndex * 100} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h3 className="text-lg font-medium mb-4 from-gray-300 to-gray-500 text-transparent bg-clip-text bg-gradient-to-r border-b border-gray-100 pb-2">
+              <h3 className="text-lg font-medium mb-4 from-gray-300 to-gray-500 text-transparent bg-clip-text bg-linear-to-r border-b border-gray-100 pb-2">
                 {category.title}
               </h3>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
